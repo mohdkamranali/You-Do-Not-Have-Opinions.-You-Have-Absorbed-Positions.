@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>You Do Not Have Opinions. You Have Absorbed Positions.</title>
+  <meta name="description" content="Most people cannot trace a single belief back to where it actually came from. They think they chose it. They did not.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+  <!-- Goatcounter — replace YOUR_SITE after signing up at goatcounter.com -->
+  <script data-goatcounter="https://YOUR_SITE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a18;
+      --paper: #f5f0e8;
+      --green: #2d5a27;
+      --orange: #c4621d;
+      --muted: #7a7568;
+      --rule: #d4cfc4;
+    }
+
+    html { font-size: 18px; }
+
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.4;
+    }
+
+    #progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--orange);
+      z-index: 200;
+      transition: width 0.1s linear;
+    }
+
+    .page {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 64px 24px 100px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.9s ease forwards 0.1s;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header { margin-bottom: 56px; }
+
+    .label {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.9rem, 7vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    h1 span { color: var(--green); font-style: italic; }
+
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .byline::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 44px 0;
+    }
+
+    p {
+      margin-bottom: 1.5em;
+      font-size: 1rem;
+      color: #2e2e2a;
+    }
+
+    em { font-style: italic; }
+    strong { font-weight: 400; color: var(--ink); }
+
+    .pull {
+      border-left: 3px solid var(--green);
+      padding: 4px 0 4px 24px;
+      margin: 44px 0;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.1rem, 4vw, 1.4rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--green);
+    }
+
+    h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.05rem, 4vw, 1.25rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin: 52px 0 18px;
+      line-height: 1.4;
+    }
+
+    h2 .why {
+      display: inline;
+      font-style: italic;
+      color: var(--orange);
+      font-size: 0.85em;
+      margin-left: 6px;
+      font-weight: 300;
+    }
+
+    .callout {
+      background: #ede8de;
+      border-radius: 4px;
+      padding: 24px 28px;
+      margin: 36px 0;
+    }
+
+    .callout p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .callout p + p { margin-top: 0.8em; }
+
+    ul.examples {
+      list-style: none;
+      margin: 20px 0 28px;
+      padding: 0;
+    }
+
+    ul.examples li {
+      padding: 13px 0 13px 22px;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.92rem;
+      color: #2e2e2a;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    ul.examples li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+    }
+
+    ul.examples li:first-child { border-top: 1px solid var(--rule); }
+
+    .test-block {
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 28px;
+      margin: 40px 0;
+    }
+
+    .test-block .test-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .test-block p {
+      margin: 0;
+      font-size: 0.92rem;
+    }
+
+    .test-block p + p { margin-top: 0.8em; }
+
+    .closing {
+      margin-top: 60px;
+      padding-top: 36px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .closing p {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.2rem, 4vw, 1.6rem);
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: 0.5em;
+    }
+
+    .closing p.green {
+      color: var(--green);
+      font-style: italic;
+    }
+
+    footer {
+      margin-top: 72px;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 480px) {
+      html { font-size: 16px; }
+      .page { padding: 40px 18px 64px; }
+      .header { margin-bottom: 36px; }
+      h2 { margin-top: 40px; }
+      .pull { padding-left: 16px; }
+      .callout, .test-block { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progress"></div>
+
+  <div class="page">
+
+    <header class="header">
+      <span class="label">Essay · 4 min read</span>
+      <h1>You Do Not Have Opinions.<br>You Have <span>Absorbed Positions.</span></h1>
+      <div class="byline">Kamran &nbsp;·&nbsp; March 2026</div>
+    </header>
+
+    <p>Try this. Pick any strong belief you hold. Something you feel certain about. Now ask yourself: where did it come from?</p>
+
+    <p>Not the justification. Not the reasons you would give in an argument. Where did it actually come from? Who said it first? When did you first hear it? What were you surrounded by when it settled in?</p>
+
+    <p>Most people cannot answer that question. And that is the problem.</p>
+
+    <hr class="rule" />
+
+    <h2>The Installation <span class="why">— but how does it happen?</span></h2>
+
+    <p>You were not born with opinions. You were born into an environment. A family, a neighbourhood, a religion or the absence of one, a class, a culture. And that environment did not ask for your consent before it began shaping how you see the world.</p>
+
+    <p>By the time you were old enough to "form your own views," most of the foundation was already poured. The things you find obvious, the things that feel like common sense, the things that make you instinctively nod or recoil — almost none of that is original. It was absorbed. Quietly. Before you even knew it was happening.</p>
+
+    <div class="pull">
+      Someone installed it and left. You just kept running the programme.
+    </div>
+
+    <p>This is not a conspiracy. Nobody sat down and decided to programme you. It is simply how humans work. We are social animals. We absorb the positions of the people around us because for most of human history, belonging to a group was survival. Disagreeing with the tribe was dangerous. So we evolved to absorb first and question later.</p>
+
+    <p>The problem is most of us never get to the questioning part.</p>
+
+    <h2>What An Absorbed Position Looks Like <span class="why">— why is it hard to spot?</span></h2>
+
+    <p>Absorbed positions are invisible precisely because they feel like your own thoughts. They do not announce themselves. They do not arrive with a source attached. They just feel like reality.</p>
+
+    <p>Some signs you are holding an absorbed position rather than a genuine opinion:</p>
+
+    <ul class="examples">
+      <li>You feel defensive or angry when it is questioned, before you have even heard the argument</li>
+      <li>You cannot explain it without repeating what someone else said, just in slightly different words</li>
+      <li>You have never seriously tried to argue the opposite side, even just to understand it</li>
+      <li>You are more comfortable around people who agree with you and vaguely unsettled by those who do not</li>
+    </ul>
+
+    <p>None of this makes you a bad or weak person. It makes you human. But it is worth being honest about.</p>
+
+    <h2>The Test <span class="why">— how do you actually find out?</span></h2>
+
+    <div class="test-block">
+      <span class="test-label">A simple exercise</span>
+      <p>Take any strong belief. Write down, in your own words, the strongest possible case <em>against</em> it. Not a strawman. The real, serious version that thoughtful people on the other side actually believe.</p>
+      <p>If you cannot do it, you do not have an opinion. You have a flag you are flying because the people around you fly it too.</p>
+    </div>
+
+    <p>This is not about changing your mind. You might do the exercise and come out more convinced than before. That is fine. The point is to know <em>why</em> you believe what you believe, rather than just <em>that</em> you believe it.</p>
+
+    <p>There is a difference between a belief you have examined and chosen to keep, and a belief you have simply never questioned. They can look identical from the outside. But they are completely different things on the inside.</p>
+
+    <h2>Why This Is Uncomfortable <span class="why">— and why you should sit with it</span></h2>
+
+    <p>Questioning your beliefs feels threatening because your beliefs feel like you. They are part of your identity, your community, your sense of where you belong. To question them is to risk losing something.</p>
+
+    <p>But here is what actually happens when you do it seriously. You do not lose yourself. You find a smaller, more honest version of what you actually think, underneath all the noise that was installed by other people.</p>
+
+    <div class="callout">
+      <p>The people who are genuinely interesting to talk to are not the ones with the most confident opinions. They are the ones who have done the uncomfortable work of tracing their beliefs back to their source, kept what survived, and let go of what did not.</p>
+      <p>They hold their views firmly but without desperation. Because they chose them. Not just inherited them.</p>
+    </div>
+
+    <h2>So What Do You Do With This? <span class="why">— the only question that matters</span></h2>
+
+    <p>You cannot uninstall everything at once. And you should not try. Some of what was absorbed is good. Some of it you would choose again if you had the chance to choose consciously.</p>
+
+    <p>But pick one belief this week. Just one. Something you feel certain about. And ask: if I had grown up somewhere completely different, surrounded by completely different people, would I still hold this? Why or why not?</p>
+
+    <p>That question alone, taken seriously, is enough to start seeing the difference between what you think and what you have simply been told to think.</p>
+
+    <div class="closing">
+      <p>You did not choose most of what you believe.</p>
+      <p>You just never noticed.</p>
+      <p class="green">The question is what you do with that now.</p>
+    </div>
+
+    <footer>© Kamran · 2026</footer>
+
+  </div>
+
+  <script>
+    const bar = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const doc = document.documentElement;
+      bar.style.width = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight) * 100) + '%';
+    }, { passive: true });
+
+    const milestones = { 25: false, 50: false, 75: false, 100: false };
+    window.addEventListener('scroll', () => {
+      const doc = document.documentElement;
+      const pct = Math.round(doc.scrollTop / (doc.scrollHeight - doc.clientHeight) * 100);
+      [25, 50, 75, 100].forEach(m => {
+        if (!milestones[m] && pct >= m) {
+          milestones[m] = true;
+          if (window.goatcounter && window.goatcounter.count) {
+            window.goatcounter.count({ path: 'read-depth-' + m, title: 'Read ' + m + '%', event: true });
+          }
+        }
+      });
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
